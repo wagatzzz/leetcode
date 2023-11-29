@@ -9,8 +9,8 @@ var reduce = function(nums, fn, init) {
         return init;
     }else{
         var val = init;
-        for(i of nums){
-            val = fn(val, i);
+        for(i in nums){
+            val = fn(val, nums[i]);
         }
     }
     return val;
