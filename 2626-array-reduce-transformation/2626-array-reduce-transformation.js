@@ -9,7 +9,7 @@ var reduce = function(nums, fn, init) {
         return init;
     }else{
         var val = init;
-        for(i=0; i<nums.length; i++){
+        for(i in nums){
             val = fn(val, nums[i]);
         }
     }
