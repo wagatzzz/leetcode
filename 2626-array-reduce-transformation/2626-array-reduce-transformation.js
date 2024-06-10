@@ -4,14 +4,10 @@
  * @param {number} init
  * @return {number}
  */
-var reduce = function(nums, fn, init) {
-    if(nums.length === 0){
-        return init;
-    }else{
-        var val = init;
-        for(i in nums){
-            val = fn(val, nums[i]);
-        }
+function reduce(nums, fn, init){
+    let result = init;
+    for(i = 0; i < nums.length; i++){
+        result = fn(result, nums[i])
     }
-    return val;
-};
+    return result;
+}
