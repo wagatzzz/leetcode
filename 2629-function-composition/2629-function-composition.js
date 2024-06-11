@@ -2,21 +2,20 @@
  * @param {Function[]} functions
  * @return {Function}
  */
-var compose = function(functions) {
-  return function(x) {
-    // Check if the array of functions is empty
-    if (functions.length === 0) {
-      return x; // Identity function f(x) = x
+
+function compose(functions){
+    if(functions.length === 0){
+        return function(x){
+            return x;
+        }
     }
-
-    // Use reduceRight to apply functions from right to left
-    return functions.reduceRight(function(result, fn) {
-      return fn(result);
-    }, x);
-  };
-};
-
-
+    return functions.reduceRight((acc, fn) =>{
+        return function(x){
+            return fn(acc(x));
+        };
+    });
+}
+/**The reduceRight method iterates over the array of functions from right to left, creating a new function that calls each function in turn, passing the result of the previous function call to the next. */
 
 /**
  * const fn = compose([x => x + 1, x => 2 * x])
